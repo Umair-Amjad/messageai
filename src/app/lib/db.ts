@@ -7,10 +7,7 @@ type connectionObject = {
 };
 
 const connection: connectionObject = {};
-// const connectOptions: ConnectOptions = {
-//   useNewUrlParser: true,  // This option is no longer needed, but doesn't harm
-//   useUnifiedTopology: true,
-// };
+
 
 async function dbConnect() {
   if (connection.isConnected) {
