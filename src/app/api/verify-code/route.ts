@@ -17,12 +17,14 @@ export async function POST(request: Request) {
     const decodeUserName = decodeURIComponent(userName);
     
 
-    const user = await UserModel.findOne({ username: decodeUserName });
+    const user = await UserModel.findOne({ userName: decodeUserName });
+    console.log(user)
+
     if (!user) {
       return Response.json(
         {
           success: false,
-          message: "user not found",
+          message: "user not founds",
         },
         { status: 400 }
       );
@@ -36,10 +38,10 @@ export async function POST(request: Request) {
       await user.save();
       return Response.json(
         {
-          success: false,
+          success: true,
           message: "Account Verified successfully",
         },
-        { status: 400 }
+        { status: 200 }
       );
     } else if (!isCodeNotExpired) {
         return Response.json(
@@ -47,7 +49,7 @@ export async function POST(request: Request) {
               success: false,
               message: "Error Verifying Code Expired ",
             },
-            { status: 200 }
+            { status: 401 }
           );
     }else{
         return Response.json(

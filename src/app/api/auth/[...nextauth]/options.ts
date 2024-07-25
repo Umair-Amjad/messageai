@@ -10,8 +10,8 @@ export const authOptions: NextAuthOptions = {
       id: "credentials",
       name: "Credentials",
       credentials: {
-        UserName: { label: "Username", type: "text " },
-        password: { label: "Password", type: "password" },
+        UserName: { label: "identifier", type: "text " },
+        password: { label: "Password", type: "text" },
       },
       async authorize(credentials: any): Promise<any> {
         await dbConnect();

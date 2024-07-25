@@ -51,13 +51,13 @@ export async function GET(request: Request) {
       userName,
       isVerified: true,
     });
-    console.log(
-      searchParams,
-      querryPrams,
-      result,
-      userName,
-      existingVerifiedUser
-    );
+    // console.log(
+    //   searchParams,
+    //   querryPrams,
+    //   result,
+    //   userName,
+    //   existingVerifiedUser
+    // );
 
     if (existingVerifiedUser ) {
       return Response.json(

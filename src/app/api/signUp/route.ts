@@ -12,7 +12,7 @@ export async function POST(request: Request) {
       userName,
       isVerified: true,
     });
-    console.log( userName, email, password,"hello",existinguserVerifiedByUserName)
+    // console.log( userName, email, password,"hello",existinguserVerifiedByUserName)
 
     if (existinguserVerifiedByUserName) {
       return Response.json(
