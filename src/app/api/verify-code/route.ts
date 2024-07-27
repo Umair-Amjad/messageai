@@ -1,24 +1,22 @@
 import dbConnect from "@/app/lib/db";
 import UserModel from "@/app/model/user";
 
-export async function GEET(request:Request) {
-    await dbConnect()
+export async function GEET() {
+  await dbConnect();
 
-
-    const users=await UserModel.find({}).exec()
-    console.log(users)
+  const users = await UserModel.find({}).exec();
+  return Response.json({ users });
 }
 
 export async function POST(request: Request) {
-    await dbConnect()
+  await dbConnect();
   try {
     const { userName, code } = await request.json();
-    console.log(userName,code)
+    console.log(userName, code);
     const decodeUserName = decodeURIComponent(userName);
-    
 
     const user = await UserModel.findOne({ userName: decodeUserName });
-    console.log(user)
+    console.log(user);
 
     if (!user) {
       return Response.json(
@@ -44,21 +42,21 @@ export async function POST(request: Request) {
         { status: 200 }
       );
     } else if (!isCodeNotExpired) {
-        return Response.json(
-            {
-              success: false,
-              message: "Error Verifying Code Expired ",
-            },
-            { status: 401 }
-          );
-    }else{
-        return Response.json(
-            {
-              success: false,
-              message: "Code incorrect",
-            },
-            { status: 400 }
-          );
+      return Response.json(
+        {
+          success: false,
+          message: "Error Verifying Code Expired ",
+        },
+        { status: 401 }
+      );
+    } else {
+      return Response.json(
+        {
+          success: false,
+          message: "Code incorrect",
+        },
+        { status: 400 }
+      );
     }
   } catch (error) {
     console.log("Error Verifying Code");

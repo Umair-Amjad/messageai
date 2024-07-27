@@ -18,6 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Loader2 } from "lucide-react";
 const CodeVerification = () => {
   const [isSubmitting, setisSubmitting] = useState(false);
 
@@ -80,7 +81,16 @@ const CodeVerification = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">
+           {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> please
+                  wait...
+                </>
+              ) : (
+                "Submit"
+              )}
+        </Button>
       </form>
     </Form>
       </div>

@@ -35,7 +35,7 @@ const openai=new OpenAI({
 })
 export const runtime ='edge';
 
-export async function POST(req: Request) {
+export async function POST() {
   try {
     const prompt="what is Your Name || Which one is faovurite Languge || what is computer"
     // const { messages } = await req.json();

@@ -1,4 +1,4 @@
-import mongoose, { ConnectOptions } from "mongoose";
+import mongoose from "mongoose";
 import dotenv from 'dotenv';
 dotenv.config();
 const mongoURI: any = process.env.MongoDB_URL ;
@@ -36,16 +36,7 @@ async function dbConnect() {
   console.error("coonection failed ",mongoURI,err)
 }
 }
-async function disconnect() {
-  if (connection.isConnected) {
-    if (process.env.NODE_ENV === "production") {
-      await mongoose.disconnect();
-      connection.isConnected = false;
-    } else {
-      console.log("not disconnected");
-    }
-  }
-}
+
 
 // const db = { connect, disconnect };
 export default dbConnect;

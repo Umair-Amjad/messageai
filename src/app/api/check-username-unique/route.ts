@@ -30,7 +30,6 @@ export async function GET(request: Request) {
     // validate with zod
     const result = userNameQuerrySchema.safeParse(querryPrams);
 
-    // console.log(result)
     if (!result.success) {
       const userNameError = result.error.format().userName?._errors || [];
       return Response.json(
@@ -51,13 +50,7 @@ export async function GET(request: Request) {
       userName,
       isVerified: true,
     });
-    // console.log(
-    //   searchParams,
-    //   querryPrams,
-    //   result,
-    //   userName,
-    //   existingVerifiedUser
-    // );
+   
 
     if (existingVerifiedUser ) {
       return Response.json(
