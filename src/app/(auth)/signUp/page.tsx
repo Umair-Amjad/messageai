@@ -1,6 +1,6 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
@@ -21,9 +21,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
-const page = () => {
+const signUp = () => {
   const [userName, setUserName] = useState("");
-
   const [userNameMessage, setuserNameMessage] = useState("");
   const [ischekinguserName, setischekinguserName] = useState(false);
   const [isSubmitting, setisSubmitting] = useState(false);
@@ -177,4 +176,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default signUp;
